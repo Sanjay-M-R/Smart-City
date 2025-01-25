@@ -6,18 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-
 @Data
 @Entity
 @Table
-public class Service {
+public class User {
 	@Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private int Id;
-	 private String Name;
-	 private String Department;
-	 private String Type;
-	 private String Status;
-	 private String city;
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
+	private String Name;
+	private String Role;
+	private String Department;
 }
