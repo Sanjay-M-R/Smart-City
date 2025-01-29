@@ -11,6 +11,5 @@ import lombok.Data;
 public class City {
 	private String Name;
 	@Id
-	private int Pincode;
-	private String Department;
+	private int Id;
 }
