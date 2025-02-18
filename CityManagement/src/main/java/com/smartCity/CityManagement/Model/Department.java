@@ -19,4 +19,22 @@ public class Department {
 	@ManyToOne
 	@JoinColumn(name = "City_Id")
 	private City City;
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public City getCity() {
+		return City;
+	}
+	public void setCity(City city) {
+		City = city;
+	}
 }

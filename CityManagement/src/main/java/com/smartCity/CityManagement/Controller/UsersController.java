@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.smartCity.CityManagement.Service.UsersService;
 
 @RestController
-@RequestMapping("User")
+@RequestMapping("/user")
 public class UsersController {
 	
 	@Autowired
