@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.smartCity.CityManagement.Model.Users;
 @Repository
-public interface UsersDao extends JpaRepository<Users, Integer> {
+public interface UsersDao extends JpaRepository<Users, String> {
 
 	 Optional<Users> findByEmail(String email);
 	    boolean existsByEmail(String email);
