@@ -11,7 +11,7 @@ import com.smartCity.CityManagement.Model.Department;
 import com.smartCity.CityManagement.Service.DepartmentService;
 
 @RestController
-@RequestMapping("/Deparment")
+@RequestMapping("/department")
 public class DepartMentController {
 
 	@Autowired

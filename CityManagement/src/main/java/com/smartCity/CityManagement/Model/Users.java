@@ -26,9 +26,6 @@ public class Users implements UserDetails {
 	private String Name;
 	private String Gender;
 	private int Age;
-	@ManyToOne
-	@JoinColumn(name = "City_Id")
-	private City city;
 	
 	@Id
 	@Column(unique = true)
@@ -62,15 +59,6 @@ public class Users implements UserDetails {
 
 	public void setAge(int age) {
 		Age = age;
-	}
-
-
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
 	}
 
 	public String getEmail() {

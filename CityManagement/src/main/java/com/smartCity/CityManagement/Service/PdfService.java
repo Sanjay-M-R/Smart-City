@@ -22,7 +22,7 @@ public class PdfService {
 		document.add(new Paragraph("Request ID: " + request.getId()));
 		document.add(new Paragraph("Type: " + request.getType()));
 		document.add(new Paragraph("Description: " + request.getDescription()));
-        document.add(new Paragraph("Location: " + request.getCity()));
+        
         document.add(new Paragraph("Status: " + request.getStatus()));
         
         document.close();

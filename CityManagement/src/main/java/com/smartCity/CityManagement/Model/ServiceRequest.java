@@ -1,14 +1,10 @@
 package com.smartCity.CityManagement.Model;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -22,10 +18,10 @@ public class ServiceRequest {
 	private int Id;
 	private String Description;
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_email")
 	private Users requestedBy;
 	@ManyToOne
-	@JoinColumn(name = "department_id")
+	@JoinColumn(name = "department_name")
 	private Department department;
 
 	public void setDepartment(Department department) {
@@ -33,7 +29,11 @@ public class ServiceRequest {
 	}
 
 	private String Type;
-	private String Status;
+	private String status;
+
+	public Department getDepartment() {
+		return department;
+	}
 
 	public int getId() {
 		return Id;
@@ -68,23 +68,13 @@ public class ServiceRequest {
 	}
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
-	public void setStatus(String status) {
-		Status = status;
+	public void setStatus(String Status) {
+		status = Status;
 	}
 
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "City_Id")
-	private City city;
+	
 
 }

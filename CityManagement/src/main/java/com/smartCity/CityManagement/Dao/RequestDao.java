@@ -14,4 +14,7 @@ public interface RequestDao extends JpaRepository<ServiceRequest, Integer> {
 
 	List<ServiceRequest> findByRequestedBy(Users currentUser);
 
+	List<ServiceRequest> findByStatus(String Status);
+
+
 }
