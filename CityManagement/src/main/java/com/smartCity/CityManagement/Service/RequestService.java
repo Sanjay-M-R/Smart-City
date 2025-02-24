@@ -30,6 +30,10 @@ public class RequestService {
 	EmailService emailService;
 
 	public ResponseEntity<ServiceRequest> createServiceRequest(ServiceRequest request) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Users currentUser = (Users) authentication.getPrincipal();
+		request.setRequestedBy(currentUser);
+		request.setCity(currentUser.getCity());
 		request.setStatus("PENDING");
 		ServiceRequest createdRequest = requestDao.save(request);
 		return new ResponseEntity<>(createdRequest,HttpStatus.CREATED);

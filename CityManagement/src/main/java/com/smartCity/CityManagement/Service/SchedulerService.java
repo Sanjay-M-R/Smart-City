@@ -30,6 +30,7 @@ public class SchedulerService {
 		List<ServiceRequest> pendingRequest = requestDao.findByStatus("PENDING");
 		
 		for(ServiceRequest request:pendingRequest ) {
+			request.setStatus("IN PROGRESS");
 			Department department = request.getDepartment();
 			
 			String subject="Pending request";

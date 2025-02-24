@@ -26,7 +26,21 @@ public class Users implements UserDetails {
 	private String Name;
 	private String Gender;
 	private int Age;
+	@ManyToOne
+	@JoinColumn(name = "city_id",referencedColumnName = "id")
+	private City city;
 	
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public UserRole getUserRole() {
+		return userRole;
+	}
 	@Id
 	@Column(unique = true)
 	private String email;

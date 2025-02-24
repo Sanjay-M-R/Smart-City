@@ -1,12 +1,17 @@
 package com.smartCity.CityManagement.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "departments")
 
 public class Department {
 	@jakarta.persistence.Id
@@ -15,6 +20,9 @@ public class Department {
 	private String Name;
 	
 	private String Email;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "city_id",referencedColumnName = "id")
+	private City city;
 	public String getEmail() {
 		return Email;
 	}
@@ -32,6 +40,12 @@ public class Department {
 	}
 	public void setName(String name) {
 		Name = name;
+	}
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
 	}
 	
 }

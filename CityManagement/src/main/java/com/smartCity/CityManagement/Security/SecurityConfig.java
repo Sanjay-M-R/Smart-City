@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.RequestMatchers;
 
 @Configuration
 @EnableWebSecurity
@@ -24,9 +25,9 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(requests -> requests.requestMatchers("/auth/**").permitAll()
-						.requestMatchers("/department/**").permitAll()
-						.requestMatchers("/user/**").hasRole("CITIZEN")
-						.requestMatchers("/ServiceRequest/**").hasRole("ADMIN").anyRequest().authenticated())
+						.requestMatchers("/city/**").hasRole("ADMIN")
+						.requestMatchers("/department/**").hasRole("ADMIN")
+						.requestMatchers("/Admin").hasRole("ADMIN").anyRequest().authenticated())
 				.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authenticationProvider)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

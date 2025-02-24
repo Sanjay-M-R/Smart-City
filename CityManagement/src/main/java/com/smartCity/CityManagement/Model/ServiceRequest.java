@@ -1,6 +1,7 @@
 package com.smartCity.CityManagement.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,27 +10,51 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Data
+
 @Entity
-@Table
+@Table(name = "Requests")
 public class ServiceRequest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
+	private String Name;
 	private String Description;
 	@ManyToOne
-	@JoinColumn(name = "user_email")
+	@JoinColumn(name = "user_email",referencedColumnName = "email")
 	private Users requestedBy;
 	@ManyToOne
-	@JoinColumn(name = "department_name")
+	@JoinColumn(name = "department_id",referencedColumnName = "id")
 	private Department department;
+	
+	@ManyToOne
+	@JoinColumn(name ="city_id",referencedColumnName = "id")
+	private City city;
+	private String Type;
+	private String status;
+	
+	
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	
 
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 
-	private String Type;
-	private String status;
 
 	public Department getDepartment() {
 		return department;
@@ -51,9 +76,6 @@ public class ServiceRequest {
 		Description = description;
 	}
 
-	public Users getRequestedBy() {
-		return requestedBy;
-	}
 
 	public void setRequestedBy(Users requestedBy) {
 		this.requestedBy = requestedBy;

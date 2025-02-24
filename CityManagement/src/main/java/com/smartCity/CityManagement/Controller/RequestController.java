@@ -31,7 +31,7 @@ public class RequestController {
 		return requestService.createServiceRequest(request);
 	}
 
-	@GetMapping("/Admin/all")
+	@GetMapping("/Admin/allRequests")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<ServiceRequest>> getAllRequest() {
 		return requestService.getAllRequest();
