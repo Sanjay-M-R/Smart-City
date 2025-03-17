@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smartCity.CityManagement.Model.City;
-import com.smartCity.CityManagement.Service.CityService;
+import com.smartCity.CityManagement.Model.Demo;
+import com.smartCity.CityManagement.Service.DemoService;
 
 @RestController
-@RequestMapping("/city")
-public class CityController {
+@RequestMapping("/Demo")
+public class DemoController {
 
 	@Autowired
-	CityService cityService;
-
-	@PostMapping("/addCity")
-	public ResponseEntity<String> addCity(@RequestBody City city) {
-		return cityService.addCity(city);
-
+	DemoService demoService;
+	
+	@PostMapping("/newDemo")
+	public ResponseEntity<String> createDemo(@RequestBody Demo demo){
+		return demoService.addDemo(demo);
+		
 	}
-
 }
